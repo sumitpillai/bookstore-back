@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Book {
@@ -33,15 +37,24 @@ public class Book {
 	private Long id;
 
 	@Column(length = 200)
+	@NotNull
+	@Size(min = 1, max = 200)
 	private String title;
-	@Column(length = 1000)
+
+	@Column(length = 10000)
+	@Size(max = 10000)
 	private String description;
+
 	@Column(name = "unit_cost")
+	@Min(value = 1)
 	private Float unitCost;
 
+	@NotNull
 	private String isbn;
+
 	@Column(name = "publication_date")
 	@Temporal(TemporalType.DATE)
+	@Past
 	private Date publicationDate;
 
 	private Integer nbOfPages;

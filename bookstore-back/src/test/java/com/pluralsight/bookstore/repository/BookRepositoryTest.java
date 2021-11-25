@@ -31,9 +31,15 @@ public class BookRepositoryTest {
 				.addAsManifestResource("META-INF/test-persistence.xml", "persistence.xml");
 	}
 
-
+	@Test(expected = Exception.class)
+	public void createInvalidBook() {
+		Book book = new Book(null, "Part 1", 100.00F, "isbn", new Date(), 500, "http://harrypotter.com",
+				Language.ENGLISH);
+		bookRepository.create(book);
+	}
 
 	@Test
+
 	public void create() {
 		// fail("Not yet implemented");
 
@@ -52,7 +58,7 @@ public class BookRepositoryTest {
 		book = bookRepository.find(id);
 		assertEquals("Harry Potter", book.getTitle());
 
-		assertEquals(Long.valueOf(0), bookRepository.countAll());
+		assertEquals(Long.valueOf(1), bookRepository.countAll());
 		assertEquals(1, bookRepository.findAll().size());
 
 	}
