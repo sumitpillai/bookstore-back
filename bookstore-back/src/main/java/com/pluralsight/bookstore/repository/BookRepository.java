@@ -2,21 +2,33 @@ package com.pluralsight.bookstore.repository;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import com.pluralsight.bookstore.model.Book;
+import com.pluralsight.bookstore.util.NumberGenerator;
+import com.pluralsight.bookstore.util.TextUtil;
 
 @Transactional(value = TxType.SUPPORTS)
 public class BookRepository {
+
+	@Inject
+	private TextUtil textUtil;
+
+	@Inject
+	private NumberGenerator numberGenerator;
 
 	@PersistenceContext(unitName = "bookStorePU")
 	EntityManager em;
 
 	@Transactional(value = TxType.REQUIRED)
 	public Book create(final Book book) {
+
+		book.setTitle(textUtil.sanitize(book.getTitle()));
+		book.setIsbn(numberGenerator.generateNumber());
 		em.persist(book);
 		return book;
 	}
