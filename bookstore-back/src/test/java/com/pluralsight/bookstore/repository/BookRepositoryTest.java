@@ -29,9 +29,14 @@ public class BookRepositoryTest {
 
 	@Deployment
 	public static JavaArchive createDeployment() {
-		return ShrinkWrap.create(JavaArchive.class).addClass(BookRepository.class).addClass(Book.class)
-				.addClass(Language.class).addClass(NumberGenerator.class).addClass(TextUtil.class)
-				.addClass(IsbnGenerator.class).addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+		return ShrinkWrap.create(JavaArchive.class)
+				.addClass(BookRepository.class)
+				.addClass(Book.class)
+				.addClass(Language.class)
+				.addClass(NumberGenerator.class)
+				.addClass(TextUtil.class)
+				.addClass(IsbnGenerator.class)
+				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsManifestResource("META-INF/test-persistence.xml", "persistence.xml");
 	}
 

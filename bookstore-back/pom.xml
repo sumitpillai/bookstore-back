@@ -4,11 +4,11 @@
          xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.pluralsight.java-ee-getting-started.java-ee-getting-started-m6</groupId>
+    <groupId>com.pluralsight.java-ee-getting-started.java-ee-getting-started-m9</groupId>
     <artifactId>bookstore-back</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>Java EE Getting Started :: java-ee-getting-started-m6 :: Testing the Repository :: Back</name>
+    <name>Java EE Getting Started :: java-ee-getting-started-m9 :: Exposing a REST Service :: Back</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -19,6 +19,8 @@
         <version.junit>4.12</version.junit>
         <version.arquillian>1.4.1.Final</version.arquillian>
         <version.arquillian.wildfly>2.1.1.Final</version.arquillian.wildfly>
+        <version.arquillian.rest>1.0.0.Alpha4</version.arquillian.rest>
+        <version.resteasy>3.6.3.Final</version.resteasy>
         <!-- Plugins -->
         <version.assembly.plugin>3.1.1</version.assembly.plugin>
         <version.compiler.plugin>3.8.0</version.compiler.plugin>
@@ -63,6 +65,24 @@
             <groupId>org.wildfly.arquillian</groupId>
             <artifactId>wildfly-arquillian-container-remote</artifactId>
             <version>${version.arquillian.wildfly}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-rest-client-api</artifactId>
+            <version>${version.arquillian.rest}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-rest-client-impl-3x</artifactId>
+            <version>${version.arquillian.rest}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>${version.resteasy}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -36,13 +36,13 @@ public class Book {
 	@GeneratedValue
 	private Long id;
 
-	@Column(length = 200)
+	@Column(length = 1000)
 	@NotNull
-	@Size(min = 1, max = 200)
+	@Size(min = 1, max = 1000)
 	private String title;
 
-	@Column(length = 10000)
-	@Size(max = 10000)
+	@Column(length = 15000)
+	@Size(max = 15000)
 	private String description;
 
 	@Column(name = "unit_cost")
@@ -57,7 +57,9 @@ public class Book {
 	@Past
 	private Date publicationDate;
 
+	@Column(name = "nb_of_pages")
 	private Integer nbOfPages;
+
 	@Column(name = "image_url")
 	private String imageUrl;
 
